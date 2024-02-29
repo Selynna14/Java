@@ -1,0 +1,80 @@
+/**
+*This is a program for roman numerals using JOptionPane and swtch case.
+* @author Selynna Song 
+* @ version 1.0
+* date: 2/29/2024
+*/
+import javax.swing.*;
+public class RomanNumerals
+{// start of class
+public static void main (String[] args)
+	{//start of method
+		String userInput="";
+		int num=0;
+		boolean badInput =true;
+		String output;
+		while (badInput)
+		{//start of while loop
+			userInput = JOptionPane.showInputDialog("Enter an integer from 1-10: ");
+			try 
+			{//start of try
+				num =  Integer.parseInt(userInput);
+				if (num<11&&num>0)
+					badInput= false;
+				else
+					JOptionPane.showMessageDialog(null,"Error, you have entered a number not in the range.");
+			}//end of try
+			catch (Exception e)
+			{//start of catch
+				System.out.println("Error!"+ e);
+			}//end of catch
+		}//end of while loop
+		output = String.format("Thanks for entering a number. You entered: %d",num);
+		JOptionPane.showMessageDialog(null,output);
+		switch (num)
+		{//start switch
+			case 10:
+				output= String.format("X is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 9:
+				output= String.format("IX is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 8:
+				output= String.format("VIII is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 7:
+				output= String.format("VII is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 6:
+				output= String.format("VI is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 5:
+				output= String.format("V is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 4:
+				output= String.format("IV is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 3:
+				output= String.format("III is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 2:
+				output= String.format("II is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			case 1:
+				output= String.format("I is the roman numeral for %d.",num);
+				JOptionPane.showMessageDialog(null,output);
+				break;
+			default:
+				JOptionPane.showMessageDialog(null,"error");
+		}//end swicth
+	}//end of method
+}//end of class
