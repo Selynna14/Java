@@ -1,5 +1,6 @@
 /**
 *This is a program for roman numerals using JOptionPane and swtch case.
+*Also a program for asking test scores and telling you the grade letter. 
 * @author Selynna Song 
 * @ version 1.0
 * date: 2/29/2024
