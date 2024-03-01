@@ -1,5 +1,5 @@
 /**
-*This is a program for roman numerals using JOptionPane and swtch case.
+*This is a program for roman numerals using JOptionPane and switch case.
 *Also a program for asking test scores and telling you the grade letter. 
 * @author Selynna Song 
 * @ version 1.0
@@ -10,13 +10,21 @@ public class RomanNumerals
 {// start of class
 public static void main (String[] args)
 	{//start of method
-		String userInput="";
-		int num=0;
+		String userInput="";//roman numerals program
+		String test1="";//for test score program
+		String test2="";
+		String test3="";
+		int num=0;//roman numerals program
+		int num1=-1;//for test score program
+		int num2=-1;
+		int num3=-1;
 		boolean badInput =true;
 		String output;
+		double average;
+		JOptionPane.showMessageDialog(null,"Hello User, Welcome to the the roman numerale and test scoree program. First you wiil go through the roman numerals program.");
 		while (badInput)
 		{//start of while loop
-			userInput = JOptionPane.showInputDialog("Enter an integer from 1-10: ");
+			userInput = JOptionPane.showInputDialog("Want to know the roman numeral for a number? Enter an integer from 1-10: ");
 			try 
 			{//start of try
 				num =  Integer.parseInt(userInput);
@@ -76,6 +84,87 @@ public static void main (String[] args)
 				break;
 			default:
 				JOptionPane.showMessageDialog(null,"error");
-		}//end swicth
+		}//end switch
+		badInput=true;
+		JOptionPane.showMessageDialog(null,"Now let's enter your test scores and find the average and letter grade of the average.");
+		while (badInput)
+			{//start of while loop
+				test1 = JOptionPane.showInputDialog("Enter your first test score (out of 100): ");
+				try 
+				{//start of try
+					num1 =  Integer.parseInt(test1);
+					if (num1<101&&num1>=0)
+						badInput= false;
+					else
+						JOptionPane.showMessageDialog(null,"Error, you have entered a number not in the range.");
+				}//end of try
+				catch (Exception e)
+				{//start of catch
+					System.out.println("Error!"+ e);
+				}//end of catch
+			}//end of while loop
+		badInput=true;//reset 
+		while (badInput)
+			{//start of while loop
+				test2 = JOptionPane.showInputDialog("Enter your second test score (out of 100): ");
+				try 
+				{//start of try
+					num2 =  Integer.parseInt(test2);
+					if (num2<101&&num2>=0)
+						badInput= false;
+					else
+						JOptionPane.showMessageDialog(null,"Error, you have entered a number not in the range.");
+				}//end of try
+				catch (Exception e)
+				{//start of catch
+					System.out.println("Error!"+ e);
+				}//end of catch
+			}//end of while loop
+		badInput=true;//reset 
+		while (badInput)
+			{//start of while loop
+				test3 = JOptionPane.showInputDialog("Enter your third test score (out of 100): ");
+				try 
+				{//start of try
+					num3 =  Integer.parseInt(test3);
+					if (num3<101&&num3>=0)
+						badInput= false;
+					else
+						JOptionPane.showMessageDialog(null,"Error, you have entered a number not in the range.");
+				}//end of try
+				catch (Exception e)
+				{//start of catch
+					System.out.println("Error!"+ e);
+				}//end of catch
+			}//end of while loop
+		output = String.format("Thanks for entering your three test scores. You entered: %d, %d, and %d.",num1,num2,num3);
+		JOptionPane.showMessageDialog(null,output);	
+		average = (num1+num2+num3)/3;
+		if (average >= 90)
+		{//start of if
+			output = String.format("The average is %.2f and the letter grade is A. Excellent Job!",average);
+			JOptionPane.showMessageDialog(null,output);	
+		}//end of if
+		else if (average >=80)
+		{//start of else if
+			output = String.format("The average is %.2f and the letter grade is B. Keep up the good work.",average);
+			JOptionPane.showMessageDialog(null,output);	
+		}//end of else if
+		else if (average >=70)
+		{//start of else if
+			output = String.format("The average is %.2f and the letter grade is C. You're on the right track.",average);
+			JOptionPane.showMessageDialog(null,output);	
+		}//end of else if
+		else if (average >=60)
+		{//start of else if
+			output = String.format("The average is %.2f and the letter grade is D. Work on studying",average);
+			JOptionPane.showMessageDialog(null,output);	
+		}//end of else if		
+		else
+		{//start of else if
+			output = String.format("The average is %.2f and the letter grade is F. You need to study a lot more.",average);
+			JOptionPane.showMessageDialog(null,output);	
+		}//end of else if		
+			
 	}//end of method
 }//end of class
