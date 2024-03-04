@@ -1,0 +1,175 @@
+import java.util.Scanner;  // Needed for the Scanner class
+import javax.swing.*;
+/**
+   This program allows the user to order a pizza.
+   * Author@ Selynna Song
+   * 3/4/24
+*/
+
+public class Song_PizzaOrder
+{
+   public static void main (String[] args)
+   {
+      // Create a Scanner object to read input.
+      Scanner keyboard = new Scanner (System.in);
+
+      String firstName;             // User's first name
+      boolean discount = false;     // Flag for discount
+      String size; //size of pizza //convert string to int
+      int inches;                   // Size of the pizza
+      char crustType;               // For type of crust
+      String crust = "Hand-tossed"; // Name of crust
+      double cost = 12.99;          // Cost of the pizza
+      final double TAX_RATE = .08;  // Sales tax rate
+      double tax;                   // Amount of tax
+      char choice;                  // User's choice
+      String input;                 // User input
+      String toppings = "Cheese ";  // List of toppings
+      int numberOfToppings = 0;     // Number of toppings
+
+      // Prompt user and get first name.
+      JOptionPane.showMessageDialog(null,"Welcome to Mike and " + "Diane's Pizza");
+      firstName = JOptionPane.showInputDialog("Enter your first name: ");
+
+      // Determine if user is eligible for discount by
+      // having the same first name as one of the owners.
+      // ADD LINES HERE FOR TASK #1
+      if (firstName.equalsIgnoreCase("Mike")||firstName.equalsIgnoreCase("Diane"))
+		  discount = true;
+      // Prompt user and get pizza size choice.
+      JOptionPane.showMessageDialog(null,"Pizza Size (inches)   Cost");
+      JOptionPane.showMessageDialog(null,"        10            $10.99");
+      JOptionPane.showMessageDialog(null,"        12            $12.99");
+      JOptionPane.showMessageDialog(null,"        14            $14.99");
+      JOptionPane.showMessageDialog(null,"        16            $16.99");
+      JOptionPane.showMessageDialog(null,"What size pizza " + "would you like?");
+      size = JOptionPane.showInputDialog("10, 12, 14, or 16 " + "(enter the number only): ");
+      try
+      {
+		inches =  Integer.parseInt(size);
+	  }
+	  catch (Exception e)
+	  {
+		System.out.println("Error!"+ e);
+	  }
+      // Set price and size of pizza ordered.
+      // ADD LINES HERE FOR TASK #2
+      if (inches == 10)
+		  cost =10.99;
+      else if (inches == 12)
+		  cost =12.99;
+      else if (inches == 14)
+		  cost =14.99;
+      else if (inches == 16)
+		  cost =16.99;
+	  else 
+	  {//start of else
+		  cost = 12.99;
+		  JOptionPane.showMessageDialog(null,"Your input was not one of the following sizes, so a 12 inch will be made.");
+      }//end of else
+      // Consume the remaining newline character.
+      // Prompt user and get crust choice.
+      JOptionPane.showMessageDialog(null,"What type of crust " +
+                         "do you want? ");
+      input = JOptionPane.showInputDialog("(H)Hand-tossed, " +
+                       "(T) Thin-crust, or " +
+                       "(D) Deep-dish " +
+                       "(enter H, T, or D): ");
+      crustType = input.charAt(0);
+
+      // Set user's crust choice on pizza ordered.
+      // ADD LINES FOR TASK #3
+      switch (crustType)
+      {//start switch
+			case 'H':
+				crust = "Hand-tossed";
+				break;
+			case 'h':
+				crust = "Hand-tossed";
+				break;
+			case 'T':
+				crust = "Thin-crust";
+				break;
+			case 't':
+				crust = "Thin-crust";
+				break;
+			case 'D':
+				crust = "Deep-dish";
+				break;
+			case 'd':
+				crust = "Deep-dish";
+				break;
+			default:
+				JOptionPane.showMessageDialog(null,"You did not enter one of the following, so Hand-tossed will be made.");
+				crust = "Hand-tossed";			
+	  }//end switch
+      // Prompt user and get topping choices one at a time.
+      System.out.println("All pizzas come with cheese.");
+      System.out.println("Additional toppings are " +
+                         "$1.25 each, choose from:");
+      System.out.println("Pepperoni, Sausage, " +
+                         "Onion, Mushroom");
+
+      // If topping is desired,
+      // add to topping list and number of toppings
+      input = JOptionPane.showMessageDialog(null,"Do you want Pepperoni? (Y/N): ");
+      choice = input.charAt(0);
+      if (choice == 'Y' || choice == 'y')
+      {
+         numberOfToppings += 1;
+         toppings = toppings + "Pepperoni ";
+      }
+      input = JOptionPane.showMessageDialog(null,"Do you want Sausage? (Y/N): ");
+      choice = input.charAt(0);
+      if (choice == 'Y' || choice == 'y')
+      {
+         numberOfToppings += 1;
+         toppings = toppings + "Sausage ";
+      }
+      input = JOptionPane.showMessageDialog(null,"Do you want Onion? (Y/N): ");
+      choice = input.charAt(0);
+      if (choice == 'Y' || choice == 'y')
+      {
+         numberOfToppings += 1;
+         toppings = toppings + "Onion ";
+      }
+      input = JOptionPane.showMessageDialog(null,"Do you want Mushroom? (Y/N): ");
+      choice = input.charAt(0);
+      if (choice == 'Y' || choice == 'y')
+      {
+         numberOfToppings += 1;
+         toppings = toppings + "Mushroom ";
+      }
+
+      // Add additional toppings cost to cost of pizza.
+      cost = cost + (1.25 * numberOfToppings);
+
+      // Display order confirmation.
+      System.out.println();
+      System.out.println("Your order is as follows: ");
+      System.out.println(inches + " inch pizza");
+      System.out.println(crust + " crust");
+      System.out.println(toppings);
+
+      // Apply discount if user is eligible.
+      // ADD LINES FOR TASK #4 HERE
+      if (discount==true)
+      {//start of if
+		  JOptionPane.showMessageDialog(null,"You are elligle for a discount of $2.00.");
+		  cost=cost-2.00;
+	  }//end of if	  
+      // EDIT PROGRAM FOR TASK #5
+      // SO ALL MONEY OUTPUT APPEARS WITH 2 DECIMAL PLACES
+      System.out.printf("The cost of your order " +
+                        "is: $%f\n", cost);
+
+      // Calculate and display tax and total cost.
+      tax = cost * TAX_RATE;
+      System.out.printf("The tax is: $%f\n", tax);
+      System.out.printf("The total due is: $%f\n",
+                        (tax + cost));
+
+      System.out.println("Your order will be ready " +
+                         "for pickup in 30 minutes.");
+   }
+}
