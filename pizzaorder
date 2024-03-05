@@ -1,8 +1,9 @@
 import java.util.Scanner;  // Needed for the Scanner class
 import javax.swing.*; //Needed for Dialog Boxes
 /**
-   This program allows the user to order a pizza.
+   * This program allows the user to order a pizza.
    * @author Selynna Song
+   * @ version 1.0
    * 3/4/24
 */
 
@@ -24,7 +25,9 @@ public class Song_PizzaOrder
 		char choice;                  // User's choice
 		String input;                 // User input
 		String toppings = "Cheese ";  // List of toppings
-		int numberOfToppings = 0;     // Number of toppings
+		int numberOfToppings = 0;     // Number of topping
+		String output;                 // For string format
+		boolean selection = true;     //for while loop 
 
 		// Prompt user and get first name.
 		JOptionPane.showMessageDialog(null,"Welcome to Mike and " + "Diane's Pizza");
@@ -36,13 +39,15 @@ public class Song_PizzaOrder
 		if (firstName.equalsIgnoreCase("Mike")||firstName.equalsIgnoreCase("Diane"))
 			discount = true;
 		// Prompt user and get pizza size choice.
-		JOptionPane.showMessageDialog(null,"Pizza Size (inches)   Cost");
-		JOptionPane.showMessageDialog(null,"        10            $10.99");
-		JOptionPane.showMessageDialog(null,"        12            $12.99");
-		JOptionPane.showMessageDialog(null,"        14            $14.99");
-		JOptionPane.showMessageDialog(null,"        16            $16.99");
-		JOptionPane.showMessageDialog(null,"What size pizza " + "would you like?");
-		size = JOptionPane.showInputDialog("10, 12, 14, or 16 " + "(enter the number only): ");
+		JOptionPane.showMessageDialog(null,"Pizza Size (inches)   Cost \n        10            $10.99\n         12            $12.99\n        14            $14.99\n        16            $16.99");
+		JOptionPane.showMessageDialog(null,"What size pizza would you like? Choose from the dropdown menu: ");
+		//Dropdown menu
+		JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        Object[] options = {"10", "12", "14","16"};
+        //...and passing `frame` instead of `null` as first parameter
+        Object selectionObject = JOptionPane.showInputDialog(frame, "Choose", "Size", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        size = selectionObject.toString();
 		try
 		{
 			inches =  Integer.parseInt(size);
@@ -51,6 +56,7 @@ public class Song_PizzaOrder
 		{
 			System.out.println("Error!"+ e);
 		}
+		
 		// Set price and size of pizza ordered.
 		// ADD LINES HERE FOR TASK #2
 		if (inches == 10)
@@ -105,38 +111,76 @@ public class Song_PizzaOrder
 		JOptionPane.showMessageDialog(null,"All pizzas come with cheese.");
 		JOptionPane.showMessageDialog(null,"Additional toppings are " +
 						 "$1.25 each, choose from: Pepperoni, Sausage, " +
-						 "Onion, Mushroom");
+						 "Onion, Mushroom. If you choose the same thing twice, you will get double the amount and it is double the price.");
 		// If topping is desired,
 		// add to topping list and number of toppings
+		/**
 		input = JOptionPane.showInputDialog(null,"Do you want Pepperoni? (Y/N): ");
 		choice = input.charAt(0);
 		if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"))
 		{
-		 numberOfToppings += 1;
-		 toppings = toppings + "Pepperoni ";
+			numberOfToppings += 1;
+			toppings = toppings + "Pepperoni ";
 		}
+		else 
+			JOptionPane.showMessageDialog(null,"No Pepperoni");
 		input = JOptionPane.showInputDialog(null,"Do you want Sausage? (Y/N): ");
 		choice = input.charAt(0);
 		if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"))
 		{
-		 numberOfToppings += 1;
-		 toppings = toppings + "Sausage ";
+			numberOfToppings += 1;
+			toppings = toppings + "Sausage ";
 		}
+		else
+			JOptionPane.showMessageDialog(null,"No Sausage");
 		input = JOptionPane.showInputDialog(null,"Do you want Onion? (Y/N): ");
 		choice = input.charAt(0);
 		if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"))
 		{
-		 numberOfToppings += 1;
-		 toppings = toppings + "Onion ";
+			numberOfToppings += 1;
+			toppings = toppings + "Onion ";
 		}
+		else
+			JOptionPane.showMessageDialog(null,"No Onion");
 		input = JOptionPane.showInputDialog(null,"Do you want Mushroom? (Y/N): ");
 		choice = input.charAt(0);
 		if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"))
 		{
-		 numberOfToppings += 1;
-		 toppings = toppings + "Mushroom ";
+			 numberOfToppings += 1;
+			 toppings = toppings + "Mushroom ";
 		}
-
+		else
+			JOptionPane.showMessageDialog(null,"No Mushroom");
+		*/
+		while (selection==true)
+			Object[] Toppings = {"Pepperoni", "Sausage", "Onion","Mushroom","No more toppings"};
+			//...and passing `frame` instead of `null` as first parameter
+			Toppings selectionObject = JOptionPane.showInputDialog(frame, "Choose", " Toppings", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+			input = selectionObject.toString();
+			if (input == "Pepperoni")
+			{
+				numberOfToppings += 1;
+				toppings = toppings + "Pepperoni ";
+			}
+			else if (input == "Sausage")
+			{
+				numberOfToppings += 1;
+				toppings = toppings + "Sausage ";
+			}
+			else if (input == "Onion")
+			{
+				numberOfToppings += 1;
+				toppings = toppings + "Onion ";
+			}
+			else if (input == "Mushroom")
+			{
+				numberOfToppings += 1;
+				toppings = toppings + "Mushroom ";
+			}
+			else if (input == "No more toppings")
+			{
+				selection = false; 
+			}
 		// Add additional toppings cost to cost of pizza.
 		cost = cost + (1.25 * numberOfToppings);
 
@@ -155,12 +199,13 @@ public class Song_PizzaOrder
 		}//end of if	  
 		// EDIT PROGRAM FOR TASK #5
 		// SO ALL MONEY OUTPUT APPEARS WITH 2 DECIMAL PLACES
-		System.out.printf("The cost of your order " + "is: $%f\n", cost);
+		output = String.format("The cost of your order before tax " + "is: $%.2f\n", cost);
+		JOptionPane.showMessageDialog(null,output);
 
 		// Calculate and display tax and total cost.
 		tax = cost * TAX_RATE;
-		System.out.printf("The tax is: $%.2f", tax);
-		System.out.printf("The total due is: $%.2f",(tax + cost));
+		output = String.format("The tax is: $%.2f\nThe total due is: $%.2f", tax,(tax + cost));
+		JOptionPane.showMessageDialog(null,output);
 		JOptionPane.showMessageDialog(null,"Your order will be ready " + "for pickup in 30 minutes.");
    }
 }
