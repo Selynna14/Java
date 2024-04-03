@@ -1,0 +1,110 @@
+import java.util.Scanner;  // Needed for the Scanner class
+
+/**
+   This program allows the user to order a pizza.
+*/
+
+public class Song_PizzaOrder2
+{//start of class
+	public static void main (String[] args)
+	{//start of main method
+		String firstName;             // User's first name
+		boolean discount = false;     // Flag for discount
+		int inches=12;                   // Size of the pizza
+		char crustType;               // For type of crust
+		String crust = "Hand-tossed"; // Name of crust
+		double cost = 12.99;          // Cost of the pizza
+		final double TAX_RATE = .08;  // Sales tax rate
+		double tax;                   // Amount of tax
+		char choice;                  // User's choice
+		String input;                 // User input
+		String toppings = "Cheese ";  // List of toppings
+		int numberOfToppings = 0;     // Number of toppings
+		String numTop;
+		String size=null;
+		firstName = getInput("What is your name");
+		//if statement to check name
+		if (firstName.equalsIgnoreCase("Mike")||firstName.equalsIgnoreCase("Diane"))
+			discount = true;
+		System.out.println("Pizza Size (inches)   Cost \n        10            $10.99\n         12            $12.99\n        14            $14.99\n        16            $16.99");
+		size = getInput("What size pizza would you like");
+		try
+		{
+			inches =  Integer.parseInt(size);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error!"+ e);
+		}
+		if (inches == 10)
+			cost =10.99;
+		else if (inches == 12)
+			cost =12.99;
+		else if (inches == 14)
+			cost =14.99;
+		else if (inches == 16)
+			cost =16.99;
+		else 
+		{//start of else size
+			cost = 12.99;
+			System.out.println("Your input was not one of the following sizes, so a 12 inch will be made.");
+		}//end of else size
+		System.out.println("H)Hand-tossed, " +
+					   "(T) Thin-crust, or " +
+					   "(D) Deep-dish ");
+		input = getInput("What type of crust do you want-(enter H, T, or D)");
+		crustType = input.charAt(0);
+		switch (crustType)
+		{//start switch
+			case 'H':
+				crust = "Hand-tossed";
+				break;
+			case 'h':
+				crust = "Hand-tossed";
+				break;
+			case 'T':
+				crust = "Thin-crust";
+				break;
+			case 't':
+				crust = "Thin-crust";
+				break;
+			case 'D':
+				crust = "Deep-dish";
+				break;
+			case 'd':
+				crust = "Deep-dish";
+				break;
+			default:
+				System.out.println("You did not enter one of the following, so Hand-tossed will be made.");
+				crust = "Hand-tossed";			
+		}//end switch
+		System.out.println("All pizzas come with cheese.");
+		System.out.println("Additional toppings are $1.25 each, choose from: Pepperoni, Sausage, Onion, Mushroom.");
+		numTop = getInput("How many toppings do you want");
+		try
+		{
+			numberOfToppings =  Integer.parseInt(numTop);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error!"+ e);
+		}
+		for (int i=0; i<numberofToppings;i++)
+		{
+			numTop=getInput("What topping do you want-(Enter P,S,O,M)");
+		}
+	}//end of main method
+	
+	
+	//Question Method
+	public static String getInput (String question)
+	{//start of question method
+		// Create a Scanner object to read input.
+		Scanner sc = new Scanner (System.in);
+		System.out.print(question+": ");
+		return sc.nextLine();
+	}//end of question method
+	
+	
+	
+}//end of class
