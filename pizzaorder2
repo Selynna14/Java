@@ -91,7 +91,19 @@ public class Song_PizzaOrder2
 		}
 		for (int i=0; i<numberofToppings;i++)
 		{
-			numTop=getInput("What topping do you want-(Enter P,S,O,M)");
+			numTop=getInput("What topping do you want-(Enter P,S,O,M. Entering multiple will get you more topping for more price)");
+			switch (numTop)
+			{
+				case "P":
+					toppings = toppings + "Pepperoni ";
+				case "S":
+					toppings = toppings + "Sausage ";
+				case "O":
+					toppings = toppings + "Onion ";
+				case "M":
+					toppings = toppings + "Mushroom";
+				default
+					System.out.println("")
 		}
 	}//end of main method
 	
