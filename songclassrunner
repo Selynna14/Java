@@ -1,0 +1,11 @@
+/**
+   * This program uses classes
+   * It prints out information about people. 
+*/
+
+public class Song_Class_Runner
+{
+	Song_Human[] friendsList = new Song_Human[3];
+	friendsList[0]= new Song_Human();
+	
+}
