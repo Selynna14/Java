@@ -1,0 +1,49 @@
+//program of classes
+public class Song_Human
+{
+	//list of attributes
+	private String eyeColor;
+	private String hairColor;
+	private String hairType;
+	private String name;
+	private String skinColor;
+	private int weight;
+	private double height;
+	private String dob;
+	
+	public void friend()
+	{
+		eyeColor = "brown";
+		hairColor = "black";
+		hairType = "straight";
+		name ="Ella";
+		skinColor = "white";
+		weight = 90;
+		height = 4;
+		dob = "01/03/2012";
+	}
+	public void friend(String name)
+	{
+		eyeColor = "hazel";
+		hairColor = "brown";
+		hairType = "curly";
+		this.name =name;
+		skinColor = "white";
+		weight = 120;
+		height = 5.3;
+		dob = "04/08/2008";
+	}
+	public void friend(String eyeColor, String hairColor, String hairType, String name, String skinColor, int weight, double height, String dob)
+	{
+		this.eyeColor = eyeColor;
+		this.hairColor = hairColor;
+		this.hairType = hairType;
+		this.name = name;
+		this.skinColor = skinColor;
+		this.weight = weight;
+		this.height = height;
+		this.dob = dob;
+	}
+	
+}
+	
