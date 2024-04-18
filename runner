@@ -1,0 +1,56 @@
+/**
+   * This program prints out information about automobiles
+   * @author Selynna Song
+   * @version 1.0
+   * @since 4/16/2024
+*/
+import java.util.*;
+public class Song_Runner
+{
+	public static void main (String [] args)
+	{
+		Song_Auto[] autosList = new Song_Auto[2];
+		autosList[0] = new Song_Auto();
+		String strMake = getInput ("Enter the make of the car:");
+		String strVIN = getInput ("Enter the VIN of the car:");
+		String strModel = getInput ("Enter the model:");
+		int intYear=0;
+		int intOwners=0;
+		int intMilage=0;
+		
+		try 
+		{
+			String strMilage = getInput ("For your car, how much milage is on there:");
+			intMilage = Integer.parseInt(strMilage);
+			String strOwners = getInput ("How many previous owners were there:");
+			intOwners = Integer.parseInt(strOwners);
+			String strYear = getInput ("Enter the year:");
+			intYear = Integer.parseInt(strYear);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error:" +e);
+		}
+		autosList[1] = new Song_Auto(intMilage, intOwners, strMake, strVIN, strModel, intYear);
+		printAuto (autosList);
+	}
+	
+	public static String getInput(String question)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println(question);
+		return sc.nextLine();
+	}
+	
+	
+	public static void printAuto(Song_Auto[] autosList)
+	{
+		for(Song_Auto a : autosList)
+		{
+			if (a!=null)
+			{
+				System.out.println(a+"\n");
+			}
+		}
+	}
+}
